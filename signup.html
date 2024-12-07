@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign-Up Page</title>
+    <style>
+      body {
+        background-image: url("sign.jpg");
+        background-size: cover;
+        height: 100vh;
+        width: 90%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 20px;
+      }
+
+      form {
+        color: black;
+        display: flex;
+        flex-direction: column;
+        height: 500px;
+        width: 400px;
+        border: 1px solid black;
+        align-items: center;
+        margin-bottom: 30px;
+        box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.5);
+      }
+    </style>
+  </head>
+
+  <body>
+    <script>
+      function validate(event) {
+        event.preventDefault();
+        const firstName = document.getElementById("firstName").value;
+        const lastName = document.getElementById("lastName").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+
+        if (
+          /[0-9|@|$|%|^|&|]/.test(firstName) ||
+          /[0-9|@|$|%|^|&|]/.test(lastName)
+        ) {
+          alert("Please Enter Validate Name");
+        }
+
+        if (!/^[\w\.-]+@[\w\.-]+\.[a-zA-Z]{2,6}$/.test(email)) {
+          alert("Please Enter Valid Email");
+        }
+
+        if (password.length < 8) {
+          alert("Password should be of minimum 8 elements");
+        } else if (!/[a-zA-Z0-9]/.test(password)) {
+          alert("Password should contain alphabets and digits.");
+        } else if (!/[@|$|#|%|&|^]/.test(password)) {
+          alert("Password should contain atleast one special character");
+        }
+
+        if (password !== confirmPassword) {
+          alert("Password and confirm password should be same.");
+        }
+        alert("Sign-Up Successfully!!!!");
+        return true;
+      }
+    </script>
+    <div class="sign">
+      <form onsubmit="return validate(event)">
+        <h1>Sign-Up</h1>
+        <label>First Name</label>
+        <input
+          type="text"
+          placeholder="Enter First Name"
+          required
+          id="firstName"
+        /><br />
+        <label>Last Name</label>
+        <input
+          type="text"
+          placeholder="Enter Last Name"
+          required
+          id="lastName"
+        /><br />
+        <label>Email</label>
+        <input type="email" placeholder="E-mail" required id="email" /><br />
+        <label>Password</label>
+        <input
+          type="password"
+          placeholder="Password"
+          required
+          id="password"
+        /><br />
+        <label>Confirm Password</label>
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          required
+          id="confirmPassword"
+        /><br />
+        <input type="submit" value="submit" />
+        <div>
+          <p>By clicking the Sign-up Button you Agree to Our<br /></p>
+          <a href="#">Terms and Conditions </a> and<a href="#"
+            >Policy and Privacy</a
+          >
+        </div>
+        <p>Already have an account?<a href="login.html">Login here</a></p>
+      </form>
+    </div>
+  </body>
+</html>
