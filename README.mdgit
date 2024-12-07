@@ -1,1 +1,0 @@
-"# blood-bank-project"  initgit add README.mdgit commit -m "first commit"git branch -M maingit remote add origin https://github.com/swalehasayyed/blood-bank-project.gitgit push -u origin main
