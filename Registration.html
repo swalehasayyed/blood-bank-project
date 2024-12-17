@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blood Bank Registration</title>
+    <style>
+      body {
+        font-family: "Roboto", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8d7da; /* Light red background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-image: url("Registration.jpg");
+        background-size: cover;
+      }
+      .container {
+        width: 100%;
+        max-width: 350px; /* Reduced width */
+        background: #fff; /* White form background */
+        color: #dc3545; /* Red text */
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        padding: 20px; /* Reduced padding */
+        box-sizing: border-box;
+        border: 2px solid #dc3545; /* Red border */
+      }
+      h2 {
+        text-align: center;
+        margin-bottom: 15px; /* Reduced margin */
+        font-weight: 700;
+        font-size: 1.5rem; /* Reduced font size */
+        color: #dc3545; /* Red text */
+        text-transform: uppercase;
+      }
+      label {
+        display: block;
+        margin: 10px 0 5px; /* Reduced spacing */
+        font-weight: 500;
+        font-size: 0.9rem;
+        color: #dc3545; /* Red label */
+      }
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 10px; /* Reduced padding */
+        margin-bottom: 8px; /* Reduced spacing */
+        border: 1px solid #dc3545;
+        border-radius: 5px;
+        background: #fff; /* White background */
+        color: #333; /* Black text for inputs */
+        font-size: 0.9rem;
+      }
+      input::placeholder,
+      textarea::placeholder {
+        color: #aaa; /* Gray placeholders */
+      }
+      input:focus,
+      textarea:focus,
+      select:focus {
+        outline: none;
+        border-color: #c82333; /* Darker red focus */
+        box-shadow: 0 0 5px rgba(220, 53, 69, 0.5); /* Red glow */
+      }
+      button {
+        width: 100%;
+        padding: 10px; /* Reduced padding */
+        border: none;
+        border-radius: 5px;
+        background-color: #dc3545; /* Red button */
+        color: #fff; /* White text */
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        text-transform: uppercase;
+      }
+      button:hover {
+        background-color: #c82333; /* Darker red hover */
+      }
+      .container input,
+      .container textarea,
+      .container select {
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .container {
+        margin-left: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Blood Donor Registration</h2>
+      <form id="registrationForm" class="form">
+        <label for="name">Full Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          placeholder="Enter your name"
+          pattern="^[A-Za-z\s]{3,50}$"
+          title="Name must contain only letters and spaces, and be between 3 to 50 characters."
+        />
+
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" required>
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label for="age">Age</label>
+        <input
+          type="number"
+          id="age"
+          name="age"
+          required
+          min="18"
+          max="65"
+          placeholder="Enter your age"
+          title="Age must be between 18 and 65."
+        />
+
+        <label for="bloodGroup">Blood Group</label>
+        <select id="bloodGroup" name="bloodGroup" required>
+          <option value="">Select Blood Group</option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+        </select>
+
+        <label for="medicalDisorder">Past Medical Disorder</label>
+        <textarea
+          id="medicalDisorder"
+          name="medicalDisorder"
+          placeholder="If any, specify details"
+          pattern=".{0,500}"
+          title="Details must be less than 500 characters."
+        ></textarea>
+
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          placeholder="Enter your email"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          title="Please enter a valid email address."
+        />
+
+        <label for="phone">Phone Number</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          required
+          pattern="[0-9]{10}"
+          placeholder="Enter 10-digit phone number"
+          title="Phone number must be exactly 10 digits."
+        />
+
+        <button type="submit">Register</button>
+      </form>
+    </div>
+    <script>
+      document
+        .getElementById("registrationForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent form submission to server
+
+          // Simple validation check
+          const name = document.getElementById("name").value;
+          const age = document.getElementById("age").value;
+          const bloodGroup = document.getElementById("bloodGroup").value;
+
+          if (name && age && bloodGroup) {
+            alert("Registered Successfully");
+            document.getElementById("registrationForm").reset(); // Reset form
+          } else {
+            alert("Please fill in all the required fields correctly.");
+          }
+        });
+    </script>
+  </body>
+</html>

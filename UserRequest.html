@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blood Request Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f4f4f9;
+      }
+
+      .form-container {
+        background-color: #fff;
+        padding: 20px 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+      }
+
+      .form-container h1 {
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #555;
+      }
+
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus {
+        border-color: #007bff;
+        outline: none;
+      }
+
+      .form-group input[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        border: none;
+        font-weight: bold;
+      }
+
+      .form-group input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      .error-message {
+        font-size: 14px;
+        color: red;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const validate = (e) => {
+        e.preventDefault();
+        const errorCnt = 0;
+        const fullName = document.getElementById("fullName");
+        const email = document.getElementById("email");
+        const phone = document.getElementById("phone");
+        const units = document.getElementById("units");
+        const reason = document.getElementById("reason");
+
+        if (!/^[A-Za-z\s]{3,50}$/.test(fullName.value)) {
+          document.getElementById("nameErr").innerHTML =
+            "PName should only contain letters and spaces, and be 3-50 characters long.";
+          errorCnt++;
+        }
+
+        if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(email.value)) {
+          document.getElementById("emailErr").innerHTML =
+            "Please Enter Valid EmailID";
+          errorCnt++;
+        }
+
+        if (!/^\d{10}$/.test(phone.value)) {
+          document.getElementById("phoneErr").innerHTML =
+            "Phone number must be exactly 10 digits.";
+          errorCnt++;
+        }
+
+        if (units.value.length > 1 && units.value.length < 10) {
+          document.getElementById("unitsErr").innerHTML =
+            "Please enter a number between 1 and 10.";
+          errorCnt++;
+        }
+
+        if (!/.{10,100}/.test(reason.value)) {
+          document.getElementById("reasonErr").innerHTML =
+            "Reason must be 10-100 characters long.";
+          errorCnt++;
+        }
+        if (errorCnt === 0) {
+          alert("Request Submitted");
+        }
+        location.reload();
+        return true;
+      };
+    </script>
+    <div class="form-container">
+      <h1>Blood Request Form</h1>
+      <form
+        id="bloodRequestForm"
+        method="post"
+        onsubmit="return validate(event)"
+      >
+        <!-- Full Name -->
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            placeholder="Enter your full name"
+            required
+          />
+          <span id="nameErr" style="color: red"></span>
+        </div>
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email</label>
+
+          <input
+            type="email"
+            id="email"
+            required
+            placeholder="example@example.com"
+          />
+          <span id="emailErr" style="color: red"></span>
+        </div>
+        <!-- Phone Number -->
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="Enter your phone number"
+            required
+          />
+          <span id="phoneErr" style="color: red"></span>
+        </div>
+        <!-- Blood Group -->
+        <div class="form-group">
+          <label for="bloodGroup">Blood Group</label>
+          <select id="bloodGroup" name="bloodGroup" required>
+            <option value="">Select Blood Group</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+          </select>
+        </div>
+        <!-- Units of Blood -->
+        <div class="form-group">
+          <label for="units">Units of Blood</label>
+          <input
+            type="number"
+            id="units"
+            name="units"
+            placeholder="Enter units of blood needed"
+            required
+          />
+          <span id="unitsErr" style="color: red"></span>
+        </div>
+        <!-- Reason for Request -->
+        <div class="form-group">
+          <label for="reason">Reason for Request</label>
+          <input
+            type="text"
+            id="reason"
+            name="reason"
+            placeholder="Reason for blood request"
+            required
+          />
+          <span id="reasonErr" style="color: red"></span>
+        </div>
+        <!-- Submit Button -->
+        <div class="form-group">
+          <input type="submit" value="Submit Request" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
