@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login As - Blood Donation Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url("LoginAs.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .login-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px 30px;
+            text-align: center;
+            width: 350px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #d32f2f;
+            margin-bottom: 20px;
+        }
+
+        .button-group {
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #b71c1c;
+        }
+
+        .info {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login As</h1>
+        <p>Please select your login type for the Blood Donation Management System</p>
+        <div class="button-group">
+            <button onclick="redirectTo('user')">User Login</button>
+            <button onclick="redirectTo('admin')">Admin Login</button>
+        </div>
+        <p class="info">Choose the appropriate option to proceed with the login.</p>
+    </div>
+
+    <script>
+        function redirectTo(type) {
+            if (type === 'user') {
+                alert('Redirecting to User Login...');
+                // Replace with actual User Login page URL
+                window.location.href = 'login.html';
+            } else if (type === 'admin') {
+                alert('Redirecting to Admin Login...');
+                // Replace with actual Admin Login page URL
+                window.location.href = 'AdminLogin.html';
+            }
+        }
+    </script>
+</body>
+</html>
