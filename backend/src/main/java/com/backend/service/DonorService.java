@@ -1,41 +1,44 @@
 package com.backend.service;
 
+
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.backend.model.Donor;
 import com.backend.model.User;
+import com.backend.repo.DonorRepo;
 import com.backend.repo.UserRepo;
 
 @Service
-public class UserService {
+public class DonorService {
 	@Autowired
-	private UserRepo repo;
+	private DonorRepo repo;
 	//Create new user
-	public User addUser(User user) {
-		return repo.save(user);
+	public Donor addDonor(Donor donor) {
+		return repo.save(donor);
 	}
-	public List<User>getAllUsers(){
+	public List<Donor>getAllDonors(){
 		return repo.findAll();
 		
 	}
 	//Get user by id
-	public Optional<User>getUserById(int id){
+	public Optional<Donor>getDonorById(int id){
 		return repo.findById(id);
 		
 	}
 	//Update existing user
-	public User updateUser(int id,User user) {
+	public Donor updateDonor(int id,Donor donor) {
 		if(repo.existsById(id)) {
-			user.setId(id);
-			return repo.save(user);
+			donor.setId(id);
+			return repo.save(donor);
 		}
 		return null;
 		}
 	//Delete User
-	public boolean deleteUser(int id) {
+	public boolean deleteDonor(int id) {
 		if(repo.existsById(id)) {
 			repo.deleteById(id);
 			return true;
@@ -43,10 +46,7 @@ public class UserService {
 		return false;
 		
 	}
-	
-	public User findByUsername(String username) {
-		return repo.findByUsername(username);
-	}
 
 
 }
+

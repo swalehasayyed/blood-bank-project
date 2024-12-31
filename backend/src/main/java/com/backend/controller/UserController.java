@@ -50,6 +50,9 @@ public class UserController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable int id) {
         return service.deleteUser(id) ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+        
+        
     }
+    
 
 }
