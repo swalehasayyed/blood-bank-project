@@ -13,7 +13,7 @@ import com.backend.repo.UserRepo;
 public class UserService {
 	@Autowired
 	private UserRepo repo;
-
+	//Create new user
 	public User addUser(User user) {
 		return repo.save(user);
 	}
@@ -21,11 +21,12 @@ public class UserService {
 		return repo.findAll();
 		
 	}
-	//id
+	//Get user by id
 	public Optional<User>getUserById(int id){
 		return repo.findById(id);
 		
 	}
+	//Update existing user
 	public User updateUser(int id,User user) {
 		if(repo.existsById(id)) {
 			user.setId(id);
@@ -33,6 +34,7 @@ public class UserService {
 		}
 		return null;
 		}
+	//Delete User
 	public boolean deleteUser(int id) {
 		if(repo.existsById(id)) {
 			repo.deleteById(id);

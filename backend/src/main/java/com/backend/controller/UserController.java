@@ -24,30 +24,31 @@ public class UserController {
 	private UserService service;
 	// Get all teachers
     @GetMapping
-    public List<User> getAllTeachers() {
+    public List<User> getAllUsers() {
         return service.getAllUsers();
     }
 
-    // Get a teacher by ID
+    // Get a user by ID
     @GetMapping("/{id}")
-    public ResponseEntity<User> getTeacherById(@PathVariable int id) {
-        Optional<User> teacher = service.getUserById(id);
-        return teacher.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    public ResponseEntity<User> getUserById(@PathVariable int id) {
+        Optional<User> user = service.getUserById(id);
+        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+    //Create New User
 	@PostMapping
 	public User addUser(@RequestBody User user) {
 		return service.addUser(user);
 	}
-	 // Update an existing teacher
+	 // Update an existing user
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateTeacher(@PathVariable int id, @RequestBody User user) {
+    public ResponseEntity<User> updateUser(@PathVariable int id, @RequestBody User user) {
         User updatedUser = service.updateUser(id, user);
         return updatedUser != null ? ResponseEntity.ok(updatedUser) : ResponseEntity.notFound().build();
     }
 
     // Delete a teacher
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTeacher(@PathVariable int id) {
+    public ResponseEntity<Void> deleteUser(@PathVariable int id) {
         return service.deleteUser(id) ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }
 
