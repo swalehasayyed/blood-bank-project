@@ -32,7 +32,7 @@
 
   <body>
     <script>
-      const validate = (event) => {
+      const validate = async(event) => {
         event.preventDefault();
         let errorCount = 0;
         const firstName = document.getElementById("firstName");
@@ -75,7 +75,23 @@
             "Password and confirm password should be same.";
           errorCount++;
         }
+
         if (errorCount === 0) {
+          const response = await fetch('http://localhost:8080/signup',{
+          method:"POST",
+          headers:{
+            "Content-Type":"application/json"
+          },
+          body:JSON.stringify({
+            email:email.value,
+            firstName:firstName.value,
+            lastName:lastName.value,
+            password:password.value
+          })
+        });
+
+        const data = await response.json();
+        console.log(data)
           alert("Sign-Up Successfully!!!!");
         }
         return true;
