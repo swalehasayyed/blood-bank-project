@@ -1,150 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign-Up Page</title>
-    <style>
-      body {
-        background-image: url("sign.jpg");
-        background-size: cover;
-        height: 100vh;
-        width: 90%;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        padding: 20px;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign-Up Page</title>
+  <style>
+    body {
+      background-image: url("sign.jpg");
+      background-size: cover;
+      height: 100vh;
+      width: 90%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 20px;
+    }
+
+    form {
+      color: black;
+      display: flex;
+      flex-direction: column;
+      height: 500px;
+      width: 400px;
+      border: 1px solid black;
+      align-items: center;
+      margin-bottom: 30px;
+      box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    const validate = async (event) => {
+      event.preventDefault();
+      let errorCount = 0;
+      const firstName = document.getElementById("firstName");
+      const lastName = document.getElementById("lastName");
+      const email = document.getElementById("email");
+      const password = document.getElementById("password");
+      const confirmPassword = document.getElementById("confirmPassword");
+
+      if (/[0-9|@|$|%|^|&|]/.test(firstName.value)) {
+        document.getElementById("firstNameErr").innerHTML =
+          "Please enter valid first name";
+        errorCount++;
       }
 
-      form {
-        color: black;
-        display: flex;
-        flex-direction: column;
-        height: 500px;
-        width: 400px;
-        border: 1px solid black;
-        align-items: center;
-        margin-bottom: 30px;
-        box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.5);
+      if (/[0-9|@|$|%|^|&|]/.test(lastName.value)) {
+        errorCount++;
+        document.getElementById("lastNameErr").innerHTML =
+          "Please enter valid last name";
       }
-    </style>
-  </head>
 
-  <body>
-    <script>
-      const validate = async(event) => {
-        event.preventDefault();
-        let errorCount = 0;
-        const firstName = document.getElementById("firstName");
-        const lastName = document.getElementById("lastName");
-        const email = document.getElementById("email");
-        const password = document.getElementById("password");
-        const confirmPassword = document.getElementById("confirmPassword");
+      if (!/^[\w\.-]+@[\w\.-]+\.[a-zA-Z]{2,6}$/.test(email.value)) {
+        errorCount++;
+        document.getElementById("emailErr").innerHTML =
+          "Please enter valid email";
+      }
 
-        if (/[0-9|@|$|%|^|&|]/.test(firstName.value)) {
-          document.getElementById("firstNameErr").innerHTML =
-            "Please enter valid first name";
-          errorCount++;
-        }
+      if (password.value.length < 8) {
+        document.getElementById("passwordErr").innerHTML =
+          "Password should be of minimum 8 elements";
+        errorCount++;
+      } else if (!/[a-zA-Z0-9]/.test(password.value)) {
+        document.getElementById("passwordErr").innerHTML =
+          "Password should contain alphabets and digits.";
+        errorCount++;
+      } else if (!/[@|$|#|%|&|^]/.test(password.value)) {
+        document.getElementById("passwordErr").innerHTML =
+          "Password should contain atleast one special character";
+        errorCount++;
+      }
 
-        if (/[0-9|@|$|%|^|&|]/.test(lastName.value)) {
-          errorCount++;
-          document.getElementById("lastNameErr").innerHTML =
-            "Please enter valid last name";
-        }
+      if (password.value !== confirmPassword.value) {
+        document.getElementById("confirmPasswordErr").innerHTML =
+          "Password and confirm password should be same.";
+        errorCount++;
+      }
 
-        if (!/^[\w\.-]+@[\w\.-]+\.[a-zA-Z]{2,6}$/.test(email.value)) {
-          errorCount++;
-          document.getElementById("emailErr").innerHTML =
-            "Please enter valid email";
-        }
-
-        if (password.value.length < 8) {
-          document.getElementById("passwordErr").innerHTML =
-            "Password should be of minimum 8 elements";
-        } else if (!/[a-zA-Z0-9]/.test(password.value)) {
-          document.getElementById("passwordErr").innerHTML =
-            "Password should contain alphabets and digits.";
-        } else if (!/[@|$|#|%|&|^]/.test(password.value)) {
-          document.getElementById("passwordErr").innerHTML =
-            "Password should contain atleast one special character";
-        }
-
-        if (password.value !== confirmPassword.value) {
-          document.getElementById("confirmPasswordErr").innerHTML =
-            "Password and confirm password should be same.";
-          errorCount++;
-        }
-
-        if (errorCount === 0) {
-          const response = await fetch('http://localhost:8080/signup',{
-          method:"POST",
-          headers:{
-            "Content-Type":"application/json"
+      if (errorCount === 0) {
+        const response = await fetch('http://localhost:8080/signup', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
           },
-          body:JSON.stringify({
-            email:email.value,
-            firstName:firstName.value,
-            lastName:lastName.value,
-            password:password.value
+          body: JSON.stringify({
+            email: email.value,
+            firstName: firstName.value,
+            lastName: lastName.value,
+            password: password.value
           })
         });
 
         const data = await response.json();
-        console.log(data)
-          alert("Sign-Up Successfully!!!!");
-        }
-        return true;
-      };
-    </script>
-    <div class="sign">
-      <form onsubmit="return validate(event)">
-        <h1>Sign-Up</h1>
-        <label>First Name</label>
-        <input
-          type="text"
-          placeholder="Enter First Name"
-          required
-          id="firstName"
-        /><br />
-        <span id="firstNameErr" style="color: red"></span>
-        <label>Last Name</label>
-        <input
-          type="text"
-          placeholder="Enter Last Name"
-          required
-          id="lastName"
-        /><br />
-        <span id="lastNameErr" style="color: red"></span>
-        <label>Email</label>
-        <input type="email" placeholder="E-mail" required id="email" /><br />
-        <span id="emailErr" style="color: red"></span>
-        <label>Password</label>
-        <input
-          type="password"
-          placeholder="Password"
-          id="password"
-          required
-        /><br />
-        <span id="passwordErr" style="color: red"></span>
-        <label>Confirm Password</label>
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          id="confirmPassword"
-          required
-        /><br />
-        <span id="confirmPasswordErr" style="color: red"></span>
-        <input type="submit" value="submit" />
-        <div>
-          <p>By clicking the Sign-up Button you Agree to Our<br /></p>
-          <a href="TermsAndConditions.html">Terms and Conditions </a> and<a
-            href="privacyAndpolicy.html"
-            >Policy and Privacy</a
-          >
-        </div>
-        <p>Already have an account?<a href="login.html">Login here</a></p>
-      </form>
-    </div>
-  </body>
+        alert("Sign-Up Successfully!!!!");
+
+        location.href = "login.html"
+      }
+      return true;
+    };
+  </script>
+  <div class="sign">
+    <form onsubmit="return validate(event)">
+      <h1>Sign-Up</h1>
+      <label>First Name</label>
+      <input type="text" placeholder="Enter First Name" required id="firstName" /><br />
+      <span id="firstNameErr" style="color: red"></span>
+      <label>Last Name</label>
+      <input type="text" placeholder="Enter Last Name" required id="lastName" /><br />
+      <span id="lastNameErr" style="color: red"></span>
+      <label>Email</label>
+      <input type="email" placeholder="E-mail" required id="email" /><br />
+      <span id="emailErr" style="color: red"></span>
+      <label>Password</label>
+      <input type="password" placeholder="Password" id="password" required /><br />
+      <span id="passwordErr" style="color: red"></span>
+      <label>Confirm Password</label>
+      <input type="password" placeholder="Confirm Password" id="confirmPassword" required /><br />
+      <span id="confirmPasswordErr" style="color: red"></span>
+      <input type="submit" value="submit" />
+      <div>
+        <p>By clicking the Sign-up Button you Agree to Our<br /></p>
+        <a href="TermsAndConditions.html">Terms and Conditions </a> and<a href="privacyAndpolicy.html">Policy and
+          Privacy</a>
+      </div>
+      <p>Already have an account?<a href="login.html">Login here</a></p>
+    </form>
+  </div>
+</body>
+
 </html>
