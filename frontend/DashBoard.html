@@ -49,6 +49,22 @@
         margin-bottom: 1em;
         color: #333;
       }
+      .buttons {
+        margin-top: 1em;
+      }
+      .buttons button {
+        background-color: #ff4d4d;
+        color: white;
+        border: none;
+        padding: 0.5em 1em;
+        margin: 0.5em;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+      }
+      .buttons button:hover {
+        background-color: #d43f3f;
+      }
       footer {
         text-align: center;
         background-color: #333;
@@ -63,6 +79,7 @@
       <h1>Blood Bank Admin Dashboard</h1>
     </header>
     <nav>
+      <a href="index.html">Home</a>
       <a href="Donor-list.html">Donor List</a>
       <a href="Blood-stock.html">Blood Stock</a>
       <a href="Request.html">Requests</a>
@@ -71,14 +88,26 @@
       <div class="card" id="donor-list">
         <h3>Donor List</h3>
         <p>Manage and view all registered donors.</p>
+        <div class="buttons">
+          <button>Edit</button>
+          <button>Update</button>
+        </div>
       </div>
       <div class="card" id="blood-stock">
         <h3>Blood Stock</h3>
         <p>Check and update blood stock availability.</p>
+        <div class="buttons">
+          <button>Edit</button>
+          <button>Update</button>
+        </div>
       </div>
       <div class="card" id="requests">
         <h3>Requests</h3>
         <p>View and manage blood donation requests.</p>
+        <div class="buttons">
+          <button>Edit</button>
+          <button>Update</button>
+        </div>
       </div>
     </main>
     <footer>

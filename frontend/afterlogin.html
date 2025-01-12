@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            display: flex;
+            background-color: rgb(247, 9, 100);
+            padding: 15px;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar h1 {
+            color: white;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            margin-top: 10px;
+            z-index: 1000;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            border-bottom: 1px solid #ddd;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f2f2f2;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .content {
+            text-align: center;
+            margin-top: 50px;
+            color: #333;
+        }
+        .navbar h1{
+            color: #333;
+        }
+
+        .content h2 {
+            font-size: 32px;
+        }
+
+        .content p {
+            font-size: 18px;
+            margin: 20px auto;
+            width: 70%;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <img src="logo.jpg" alt="" width="50" />
+        <h1>Blood Donation Management</h1>
+        <div class="nav-links">
+            <div class="dropdown">
+                <a href="Registration.html">Donor &#9662;</a>
+                <div class="dropdown-content">
+                    <a href="Registration.html">Donor Registration</a>
+                </div>
+            </div>
+            <a href="#receiver">Receiver</a>
+            <a href="#search-blood">Search Blood</a>
+            <a href="#enquiry">Enquiry</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <h2>Welcome to the Blood Donation Management System</h2>
+        <p>
+            This system is designed to streamline the process of blood donation by providing
+            easy access to donor and receiver information, enabling blood searches, and handling enquiries efficiently.
+        </p>
+    </div>
+</body>
+</html>
