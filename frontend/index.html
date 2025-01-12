@@ -11,29 +11,89 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Navbar Styling */
+      .navbar {
+        background-color: #f44336; /* Red color */
+      }
+      .navbar .nav-link {
+        color: white;
+        font-weight: bold;
+        padding: 15px;
+        transition: color 0.3s;
+      }
+      .navbar .nav-link:hover {
+        color: #ffd700; /* Gold color on hover */
+      }
+      .navbar .btn {
+        border-radius: 20px;
+      }
+
+      /* Section for Compatible Blood Type Donors */
+      .compatible-donors-section {
+        background-color: #d9534f; /* Red background */
+        padding: 40px 20px;
+        color: white;
+        text-align: center;
+      }
+      .compatible-donors-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        border-bottom: 3px solid white;
+        display: inline-block;
+        padding-bottom: 10px;
+      }
+      .blood-type-card {
+        background-color: #000; /* Black background for card */
+        color: #d9534f; /* Red text */
+        border: 3px solid #d9534f; /* Red border */
+        border-radius: 10px;
+        width: 200px;
+        margin: 15px;
+        padding: 20px;
+        display: inline-block;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .blood-type-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+      }
+      .blood-type-card h4 {
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+      }
+      .blood-type-card p {
+        font-size: 1.2rem;
+      }
+    </style>
   </head>
   <body>
     <div class="container header">
       <header
-        class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
+        class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom navbar"
       >
         <div class="col-md-3 mb-2 mb-md-0">
           <img src="logo.jpg" alt="" width="50" />
         </div>
 
+        <!-- Navbar with adjusted spacing between Home and About links -->
         <ul class="nav col-12 col-md-auto mb-2 mb-md-0">
           <li><a href="#" class="nav-link px-2">Home</a></li>
           <li><a href="#" class="nav-link px-2">About</a></li>
         </ul>
 
         <div class="col-md-3 text-end">
-          <a href="LoginAs.html" class="btn btn-outline-primary me-2 login-btn">
-            Login
-          </a>
+          <a href="LoginAs.html" class="btn btn-outline-primary me-2 login-btn"
+            >Login</a
+          >
           <a href="signup.html" class="btn btn-primary signup">Sign-up</a>
         </div>
       </header>
     </div>
+
     <main>
       <div class="container col-xxl-8 px-4 py-5 banner">
         <div
@@ -44,20 +104,49 @@
               DONATE BLOOD !!!
             </h1>
             <p class="lead">
-              If you're a blood donor, you're a HERO to someone, somehere who
+              If you're a blood donor, you're a HERO to someone, somewhere who
               Gracious Gift of Life !!!
             </p>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-              <button
-                type="button"
-                class="btn my-btn-primary btn-lg px-4 me-md-2"
-              >
-                Get Started
-              </button>
-            </div>
           </div>
         </div>
       </div>
     </main>
+
+    <!-- Compatible Blood Type Donors Section -->
+    <div class="compatible-donors-section">
+      <h2>Compatible Blood Type Donors</h2>
+      <div class="blood-type-card">
+        <h4>A+</h4>
+        <p>Can donate to: A+, AB+</p>
+      </div>
+      <div class="blood-type-card">
+        <h4>A-</h4>
+        <p>Can donate to: A-, A+, AB-, AB+</p>
+      </div>
+      <div class="blood-type-card">
+        <h4>B+</h4>
+        <p>Can donate to: B+, AB+</p>
+      </div>
+      <div class="blood-type-card">
+        <h4>B-</h4>
+        <p>Can donate to: B-, B+, AB-, AB+</p>
+      </div>
+      <div class="blood-type-card">
+        <h4>O+</h4>
+        <p>Can donate to: O+, A+, B+, AB+</p>
+      </div>
+      <div class="blood-type-card">
+        <h4>O-</h4>
+        <p>Can donate to: O-, O+, A-, A+, B-, B+, AB-, AB+</p>
+      </div>
+      <div class="blood-type-card">
+        <h4>AB+</h4>
+        <p>Can donate to: AB+</p>
+      </div>
+      <div class="blood-type-card">
+        <h4>AB-</h4>
+        <p>Can donate to: AB-, AB+</p>
+      </div>
+    </div>
   </body>
 </html>
